@@ -1,1 +1,667 @@
-<hfvh></hfvh>
+<!DOCTYPE html><html lang="en"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>$BOOPRRR</title>
+  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=VT323&display=swap" rel="stylesheet">
+  <link rel="shortcut icon" href="images/gif_logo_booprrr.gif" type="image/x-icon">
+  <style>
+    :root {
+      --printer-blue: #085fb6;
+      --printer-dark: #000f33;
+      --printer-paper: #e6f0ff;
+      --printer-ink: #ffffff;
+      --printer-highlight: #00f7ff;
+      --printer-accent: #4dd5ff;
+    }
+    
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'VT323', monospace;
+      background-color: var(--printer-dark);
+      color: var(--printer-ink);
+      overflow-x: hidden;
+      position: relative;
+      background-image: 
+        linear-gradient(rgba(0, 102, 204, 0.1) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 102, 204, 0.1) 1px, transparent 1px);
+      background-size: 20px 20px;
+    }
+    
+    /* Printer Noise Effect */
+    body::after {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: 
+        linear-gradient(
+          rgba(0, 102, 204, 0.05) 1px, 
+          transparent 1px
+        );
+      background-size: 100% 3px;
+      pointer-events: none;
+      z-index: 100;
+      animation: scanline 5s linear infinite;
+    }
+    
+    @keyframes scanline {
+      0% { background-position: 0 0; }
+      100% { background-position: 0 100%; }
+    }
+    
+    /* Main Container */
+    .printer-container {
+      max-width: 800px;
+      margin: 2rem auto;
+      padding: 2rem;
+      position: relative;
+      border: 2px dashed var(--printer-accent);
+      background-color: var(--printer-blue);
+      box-shadow: 
+        0 0 0 5px var(--printer-blue),
+        0 0 0 7px var(--printer-accent),
+        5px 5px 0 7px var(--printer-dark);
+      overflow: hidden;
+    }
+    
+    /* Header Styles */
+    .printer-header {
+      text-align: center;
+      margin-bottom: 2rem;
+      position: relative;
+    }
+    
+    .printer-header h1 {
+      font-family: 'Share Tech Mono', monospace;
+      color: var(--printer-ink);
+      font-size: 3.5rem;
+      margin: 0;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      text-shadow: 3px 3px 0 var(--printer-highlight);
+    }
+    
+    .printer-header .logo {
+      width: 150px;
+      height: 150px;
+      object-fit: contain;
+      margin: 1rem 0;
+      filter: contrast(1.5) brightness(1.2);
+      border: 3px solid var(--printer-accent);
+      padding: 5px;
+      box-shadow: 3px 3px 0 var(--printer-highlight);
+      background-color: var(--printer-dark);
+    }
+    
+    .printer-slogan {
+      font-size: 1.8rem;
+      color: var(--printer-highlight);
+      font-weight: bold;
+      margin: 1rem 0;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      border-bottom: 3px solid var(--printer-accent);
+      padding-bottom: 10px;
+      display: inline-block;
+    }
+    
+    /* Printer Buttons */
+    .printer-button {
+      position: relative;
+      display: inline-block;
+      padding: 10px 20px;
+      margin: 10px;
+      color: var(--printer-ink);
+      background: var(--printer-dark);
+      border: 2px solid var(--printer-accent);
+      font-family: 'Share Tech Mono', monospace;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      cursor: pointer;
+      transition: all 0.3s;
+      box-shadow: 3px 3px 0 var(--printer-highlight);
+    }
+    
+    .printer-button:hover {
+      background-color: var(--printer-highlight);
+      color: var(--printer-dark);
+      box-shadow: 5px 5px 0 var(--printer-accent);
+      transform: translate(-2px, -2px);
+    }
+    
+    /* Contract Address Box */
+    .contract-box {
+      background: var(--printer-dark);
+      border: 2px solid var(--printer-accent);
+      padding: 15px;
+      margin: 2rem 0;
+      text-align: center;
+      position: relative;
+      box-shadow: 3px 3px 0 var(--printer-highlight);
+    }
+    
+    .contract-address {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 1.1rem;
+      color: var(--printer-highlight);
+      cursor: pointer;
+      transition: all 0.3s;
+      text-decoration: underline;
+      text-decoration-color: var(--printer-accent);
+    }
+    
+    .contract-address:hover {
+      color: var(--printer-accent);
+    }
+    
+    /* Exchange Section */
+    .exchange-section {
+      margin: 3rem 0;
+      padding: 2rem;
+      border-top: 3px dotted var(--printer-accent);
+      border-bottom: 3px dotted var(--printer-accent);
+    }
+    
+    .exchange-section h2 {
+      color: var(--printer-highlight);
+      font-family: 'Share Tech Mono', monospace;
+      text-align: center;
+      margin-bottom: 1.5rem;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+    }
+    
+    /* Printer Marquee */
+    .printer-marquee {
+      background: var(--printer-blue);
+      border-top: 3px solid var(--printer-accent);
+      border-bottom: 3px solid var(--printer-accent);
+      padding: 20px 0;
+      margin: 3rem 0;
+      overflow: hidden;
+      position: relative;
+      box-shadow: 0 5px 0 var(--printer-highlight);
+    }
+    
+    .marquee-content {
+      display: flex;
+      animation: marquee 30s linear infinite;
+    }
+    
+    .marquee-item {
+      margin: 0 30px;
+      display: flex;
+      align-items: center;
+    }
+    
+    .marquee-item img {
+      height: 40px;
+      filter: grayscale(100%) contrast(200%) brightness(0) invert(1);
+      transition: all 0.3s;
+    }
+    
+    .marquee-item:hover img {
+      filter: grayscale(0%) contrast(100%) brightness(1) invert(0) drop-shadow(0 0 5px var(--printer-highlight));
+      transform: scale(1.2);
+    }
+    
+    @keyframes marquee {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+    
+    /* Printer Jam Effect */
+    .printer-jam {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      background: repeating-linear-gradient(
+        0deg,
+        rgba(255, 0, 0, 0.1),
+        rgba(255, 0, 0, 0.1) 1px,
+        transparent 1px,
+        transparent 5px
+      );
+      pointer-events: none;
+      opacity: 0;
+      z-index: 100;
+    }
+    
+    .printer-container:hover .printer-jam {
+      animation: jam 0.5s linear;
+    }
+    
+    @keyframes jam {
+      0% { opacity: 0; }
+      10% { opacity: 0.3; }
+      20% { opacity: 0; }
+      30% { opacity: 0.5; }
+      40% { opacity: 0; }
+      50% { opacity: 0.8; }
+      60% { opacity: 0; }
+      100% { opacity: 0; }
+    }
+    
+    /* BOOP Rewards Section */
+    .boop-rewards {
+      background: var(--printer-dark);
+      padding: 2rem;
+      margin: 2rem 0;
+      border: 2px solid var(--printer-accent);
+      text-align: center;
+    }
+    
+    .boop-rewards h2 {
+      color: var(--printer-highlight);
+      font-family: 'Share Tech Mono', monospace;
+      margin-bottom: 1rem;
+    }
+    
+    .boop-rewards p {
+      font-size: 1.2rem;
+      margin-bottom: 1.5rem;
+    }
+    
+    .boop-highlight {
+      color: var(--printer-highlight);
+      font-weight: bold;
+      font-size: 1.3rem;
+    }
+    
+    /* Tokenomics Display */
+    .tokenomics-display {
+      background: var(--printer-dark);
+      border: 2px solid var(--printer-accent);
+      padding: 1.5rem;
+      margin-top: 1rem;
+      text-align: left;
+      font-family: 'Share Tech Mono', monospace;
+      display: none;
+      animation: fadeIn 0.5s ease-out;
+    }
+    
+    .tokenomics-item {
+      margin-bottom: 0.8rem;
+      display: flex;
+      justify-content: space-between;
+    }
+    
+    .tokenomics-value {
+      color: var(--printer-highlight);
+      font-weight: bold;
+    }
+    
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    @keyframes typing {
+      from { width: 0 }
+      to { width: 100% }
+    }
+    
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .printer-container {
+        margin: 1rem;
+        padding: 1rem;
+      }
+      
+      .printer-header h1 {
+        font-size: 2.5rem;
+      }
+      
+      .printer-button {
+        padding: 8px 15px;
+        font-size: 0.9rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="printer-container">
+    <div class="printer-jam"></div>
+    
+    <header class="printer-header">
+      <h1>$BOOPRRR</h1>
+      
+      <center>
+        <img src="images/gif_logo_booprrr.gif" alt="BOOPRRR Logo" class="logo">
+      </center>
+      
+      <p class="printer-slogan">BUY, HOLD BOOPRRR, EARN BOOP! <br> BOOP REWARD PRINTER</p>
+      <div>
+        <button class="printer-button">🌍 BOOP Rewards</button>
+        <button class="printer-button">🛡️ Secure Printing</button>
+        <button class="printer-button">🤝 Community Ink</button>
+      </div>
+    </header>
+    
+    <div class="contract-box">
+      <strong>CONTRACT ADDRESS:</strong><br>
+      <span id="contract" class="contract-address">coming soon</span>
+      <div id="copyNotif" style="color: var(--printer-highlight); display: none;">✓ COPIED TO CLIPBOARD</div>
+    </div>
+    
+    <p style="text-align: center; font-size: 1.2rem;">
+      <strong>TOTAL SUPPLY:</strong> 
+      <span class="boop-highlight">1B BOOPRRR</span>
+    </p>
+    
+    <div class="boop-rewards">
+      <h2>BOOP REWARDS SYSTEM</h2>
+      <p>Hold $BOOPRRR tokens and earn $BOOP automatically!</p>
+      <p class="boop-highlight">Clik button Tokenomics</p>
+      <button id="tokenomicsButton" class="printer-button">TOKENOMICS ⚙️</button>
+      
+      <div id="tokenomicsDisplay" class="tokenomics-display">
+        <div class="tokenomics-item">
+          <span>Total Supply:</span>
+          <span id="totalSupply" class="tokenomics-value"></span>
+        </div>
+        <div class="tokenomics-item">
+          <span>Min Hold:</span>
+          <span id="minHold" class="tokenomics-value"></span>
+        </div>
+        <div class="tokenomics-item">
+          <span>Distribute Interval:</span>
+          <span id="distInterval" class="tokenomics-value"></span>
+        </div>
+        <div class="tokenomics-item">
+          <span>LP Status:</span>
+          <span id="lpStatus" class="tokenomics-value"></span>
+        </div>
+        <div class="tokenomics-item">
+          <span>Marketing:</span>
+          <span id="marketing" class="tokenomics-value"></span>
+        </div>
+        <div class="tokenomics-item">
+          <span>LP Boost:</span>
+          <span id="lpBoost" class="tokenomics-value"></span>
+        </div>
+        <div class="tokenomics-item">
+          <span>Rewards:</span>
+          <span id="rewards" class="tokenomics-value"></span>
+        </div>
+      </div>
+    </div>
+    
+      
+      <div class="printer-marquee">
+        <div class="marquee-content">
+          <div class="marquee-item">
+            <img src="images/dexscanner.png" alt="DEXSCREENER">
+          </div>
+          <div class="marquee-item">
+            <img src="images/raydium.png" alt="RAYDIUM">
+          </div>
+          <div class="marquee-item">
+            <img src="images/n.png" alt="NTM">
+          </div>
+          <div class="marquee-item">
+            <img src="images/monntoxx.png" alt="NTM">
+          </div>
+          <div class="marquee-item">
+            <img src="images/dextols.webp" alt="DEXTOOLS">
+          </div>
+          <div class="marquee-item">
+            <img src="images/dexscanner.png" alt="DEXSCREENER">
+          </div>
+          <div class="marquee-item">
+            <img src="images/raydium.png" alt="RAYDIUM">
+          </div>
+          <div class="marquee-item">
+            <img src="images/dextols.webp" alt="DEXTOOLS">
+          </div>
+          <div class="marquee-item">
+            <img src="images/n.png" alt="NTM">
+          </div>
+          <div class="marquee-item">
+            <img src="images/monntoxx.png" alt="NTM">
+          </div>
+          <div class="marquee-item">
+            <img src="images/dexscanner.png" alt="DEXSCREENER">
+          </div>
+          <div class="marquee-item">
+            <img src="images/raydium.png" alt="RAYDIUM">
+          </div>
+          <div class="marquee-item">
+            <img src="images/n.png" alt="NTM">
+          </div>
+          <div class="marquee-item">
+            <img src="images/monntoxx.png" alt="NTM">
+          </div>
+          <div class="marquee-item">
+            <img src="images/dextols.webp" alt="DEXTOOLS">
+          </div>
+          <div class="marquee-item">
+            <img src="images/dexscanner.png" alt="DEXSCREENER">
+          </div>
+          <div class="marquee-item">
+            <img src="images/raydium.png" alt="RAYDIUM">
+          </div>
+          <div class="marquee-item">
+            <img src="images/dextols.webp" alt="DEXTOOLS">
+          </div>
+          <div class="marquee-item">
+            <img src="images/n.png" alt="NTM">
+          </div>
+          <div class="marquee-item">
+            <img src="images/monntoxx.png" alt="NTM">
+          </div>
+    
+       
+       
+        </div>
+      </div>
+    
+
+    
+    <div style="text-align: center; margin: 2rem 0;">
+      <a href="" class="printer-button">BUY NOW⚡</a>
+      <a href="https://x.com/BOOPRRR_SOL" class="printer-button" target="_blank">TWITTER 🐦</a>
+      <a href="https://t.me/BOOPRRR_SOL" class="printer-button" target="_blank">TELEGRAM 📢</a>
+    </div>
+  </div>
+ 
+  <div class="printer-container">
+    <section class="exchange-section">
+      <center>
+        <img src="images/BANN1.gif" alt="BOOPRRR Logo" class="logo-responsive">
+      </center>
+<style>
+  .logo-responsive {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+  border-radius: 15px;
+}
+
+</style>      
+      <h2>$BOOPRRR</h2>
+      <p style="text-align: center; margin-bottom: 2rem;">
+        AVAILABLE ON THESE PLATFORMS
+      </p>
+
+    
+      
+      
+      <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 10px;">
+        <a href="#" class="printer-button" target="_blank">↗ DEXSCREENER</a>
+        <a href="#" class="printer-button" target="_blank">↗ RAYDIUM</a>
+        <a href="#" class="printer-button" target="_blank">↗ DEXTOOLS</a>
+      
+      </div>
+    </section>
+    
+    <iframe src="https://dexscreener.com/solana/your-token-address-here?embed=1&theme=dark" frameborder="0" width="100%" height="500px" style="border: 2px solid var(--printer-accent); margin: 2rem 0;" allowtransparency="true">
+    </iframe>
+  </div>
+  
+  <div class="printer-marquee">
+    <div class="marquee-content">
+      <div class="marquee-item">
+        <img src="images/dexscanner.png" alt="DEXSCREENER">
+      </div>
+      <div class="marquee-item">
+        <img src="images/raydium.png" alt="RAYDIUM">
+      </div>
+      <div class="marquee-item">
+        <img src="images/n.png" alt="NTM">
+      </div>
+      <div class="marquee-item">
+        <img src="images/monntoxx.png" alt="NTM">
+      </div>
+      <div class="marquee-item">
+        <img src="images/dextols.webp" alt="DEXTOOLS">
+      </div>
+      <div class="marquee-item">
+        <img src="images/dexscanner.png" alt="DEXSCREENER">
+      </div>
+      <div class="marquee-item">
+        <img src="images/raydium.png" alt="RAYDIUM">
+      </div>
+      <div class="marquee-item">
+        <img src="images/dextols.webp" alt="DEXTOOLS">
+      </div>
+      <div class="marquee-item">
+        <img src="images/n.png" alt="NTM">
+      </div>
+      <div class="marquee-item">
+        <img src="images/monntoxx.png" alt="NTM">
+      </div>
+      <div class="marquee-item">
+        <img src="images/dexscanner.png" alt="DEXSCREENER">
+      </div>
+      <div class="marquee-item">
+        <img src="images/raydium.png" alt="RAYDIUM">
+      </div>
+      <div class="marquee-item">
+        <img src="images/n.png" alt="NTM">
+      </div>
+      <div class="marquee-item">
+        <img src="images/monntoxx.png" alt="NTM">
+      </div>
+      <div class="marquee-item">
+        <img src="images/dextols.webp" alt="DEXTOOLS">
+      </div>
+      <div class="marquee-item">
+        <img src="images/dexscanner.png" alt="DEXSCREENER">
+      </div>
+      <div class="marquee-item">
+        <img src="images/raydium.png" alt="RAYDIUM">
+      </div>
+      <div class="marquee-item">
+        <img src="images/dextols.webp" alt="DEXTOOLS">
+      </div>
+      <div class="marquee-item">
+        <img src="images/n.png" alt="NTM">
+      </div>
+      <div class="marquee-item">
+        <img src="images/monntoxx.png" alt="NTM">
+      </div>
+
+   
+   
+    </div>
+  </div>
+  
+  <script>
+    // Contract address copy functionality
+    document.getElementById("contract").addEventListener("click", function() {
+      const text = this.innerText;
+      navigator.clipboard.writeText(text);
+      
+      const notif = document.getElementById("copyNotif");
+      notif.style.display = "block";
+      setTimeout(() => {
+        notif.style.display = "none";
+      }, 2000);
+      
+      // Printer sound effect
+      const printSound = new Audio('https://assets.mixkit.co/sfx/preview/mixkit-printer-scanning-1568.mp3');
+      printSound.volume = 0.3;
+      printSound.play();
+    });
+    
+    // Add printer jam effect on hover
+    const containers = document.querySelectorAll('.printer-container');
+    containers.forEach(container => {
+      container.addEventListener('mouseenter', () => {
+        const jam = container.querySelector('.printer-jam');
+        jam.style.opacity = '0';
+        setTimeout(() => {
+          jam.style.opacity = '0.5';
+        }, 100);
+      });
+    });
+    
+    // Add typing effect to slogan
+    const slogan = document.querySelector('.printer-slogan');
+    const originalText = slogan.textContent;
+    slogan.textContent = '';
+    
+    let i = 0;
+    const typing = setInterval(() => {
+      if (i < originalText.length) {
+        slogan.textContent += originalText.charAt(i);
+        i++;
+      } else {
+        clearInterval(typing);
+      }
+    }, 50);
+    
+    // Tokenomics button functionality
+    const tokenomicsButton = document.getElementById('tokenomicsButton');
+    const tokenomicsDisplay = document.getElementById('tokenomicsDisplay');
+    let tokenomicsVisible = false;
+    
+    tokenomicsButton.addEventListener('click', function() {
+      tokenomicsVisible = !tokenomicsVisible;
+      
+      if (tokenomicsVisible) {
+        tokenomicsDisplay.style.display = 'block';
+        typeTokenomics();
+      } else {
+        tokenomicsDisplay.style.display = 'none';
+      }
+    });
+    
+    function typeTokenomics() {
+      const elements = {
+        totalSupply: '1,000,000,000',
+        minHold: '100K',
+        distInterval: '15 Minute',
+        lpStatus: '100% LP BURN',
+        marketing: '1% Marketing',
+        marketing: '1% Marketing',
+        lpBoost: '2% LP Boost',
+        rewards: '5% Rewards'
+      };
+      
+      Object.keys(elements).forEach(id => {
+        const element = document.getElementById(id);
+        const text = elements[id];
+        element.textContent = '';
+        
+        let j = 0;
+        const typingInterval = setInterval(() => {
+          if (j < text.length) {
+            element.textContent += text.charAt(j);
+            j++;
+          } else {
+            clearInterval(typingInterval);
+          }
+        }, 50);
+      });
+    }
+  </script>
+
+</body></html>
